@@ -26,7 +26,7 @@ export class FormComponent implements OnInit {
 
   cargarCliente(): void {
     this.activatedRoute.params.subscribe((params) => {
-      const id = params['id'];
+      const id = params.id;
       if (id) {
         this.clienteService
           .getCliente(id)

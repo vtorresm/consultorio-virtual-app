@@ -9,14 +9,21 @@ import { PacienteService } from './components/pacientes/paciente.service';
 import { DoctoresComponent } from './components/doctores/doctores.component';
 import { DoctorService } from './components/doctores/doctor.service';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormComponent } from './components/pacientes/form.component';
-import { FormDoctoresComponent } from './components/doctores/formDoctor.component';
 import { FormsModule } from '@angular/forms';
 import { PaginatorComponent } from './paginator/paginator.component';
+import { EditarDoctorComponent } from './components/doctores/editar-doctor/editar-doctor.component';
+import { LoginComponent } from './components/login/login.component';
 
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es';
+
+import { AuthGuard } from './components/login/guards/auth.guard';
+import { RoleGuard } from './components/login/guards/role.guard';
+import { TokenInterceptor } from './components/login/interceptors/token.interceptor';
+import { AuthInterceptor } from './components/login/interceptors/auth.interceptor';
+
 registerLocaleData(localeES, 'es');
 
 const routes: Routes = [
@@ -24,10 +31,21 @@ const routes: Routes = [
   { path: 'pacientes', component: PacientesComponent },
   { path: 'doctores', component: DoctoresComponent },
   { path: 'pacientes/page/:page', component: PacientesComponent },
-  { path: 'pacientes/form', component: FormComponent },
-  { path: 'pacientes/form/:id', component: FormComponent },
-  { path: 'doctores/formDoctor', component: FormDoctoresComponent },
-  { path: 'doctores/formDoctor/:id', component: FormDoctoresComponent },
+  {
+    path: 'pacientes/form',
+    component: FormComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: { role: 'ROLE_ADMIN' },
+  },
+  {
+    path: 'pacientes/form/:id',
+    component: FormComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: { role: 'ROLE_ADMIN' },
+  },
+  { path: 'doctores/editar-doctor', component: EditarDoctorComponent },
+  { path: 'doctores/editar-doctor/:id', component: EditarDoctorComponent },
+  { path: 'login', component: LoginComponent },
 ];
 @NgModule({
   declarations: [
@@ -36,8 +54,10 @@ const routes: Routes = [
     FooterComponent,
     PacientesComponent,
     FormComponent,
-    FormDoctoresComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    DoctoresComponent,
+    EditarDoctorComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +65,13 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [PacienteService, { provide: LOCALE_ID, useValue: 'es' }],
+  providers: [
+    PacienteService,
+    DoctorService,
+    { provide: LOCALE_ID, useValue: 'es' },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

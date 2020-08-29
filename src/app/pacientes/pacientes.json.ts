@@ -1,6 +1,6 @@
-import { Cliente } from './cliente';
+import { Paciente } from './paciente';
 
-export const CLIENTES: Cliente[] = [
+export const PACIENTES: Paciente[] = [
   { id: 1, nombre: 'Andrés', apellido: 'Guzmán', email: 'profesor@bolsadeideas.com', createAt: '2017-12-11' },
   { id: 2, nombre: 'Mr. John', apellido: 'Doe', email: 'john.doe@gmail.com', createAt: '2017-11-11' },
   { id: 3, nombre: 'Linus', apellido: 'Torvalds', email: 'linus.torvalds@gmail.com', createAt: '2017-11-12' },

@@ -16,8 +16,15 @@
           <th>id</th>
           <th>nombre</th>
           <th>apellido</th>
-          <th>email</th>
+          <th>dni</th>
+          <th>genero</th>
           <th>fecha</th>
+          <th>email</th>
+          <th>celular</th>
+          <th>distrito</th>
+          <th>direccion</th>
+          <th>referencia</th>
+          <th>interior</th>
           <th>
             editar
           </th>
@@ -29,7 +36,14 @@
           <td>{{ paciente.id }}</td>
           <td>{{ paciente.nombre }}</td>
           <td>{{ paciente.apellido | uppercase }}</td>
+          <td>{{ paciente.dni }}</td>
+          <td>{{ paciente.genero }}</td>
           <td>{{ paciente.email }}</td>
+          <td>{{ paciente.celular }}</td>
+          <td>{{ paciente.distrito }}</td>
+          <td>{{ paciente.direccion }}</td>
+          <td>{{ paciente.referencia }}</td>
+          <td>{{ paciente.interior }}</td>
           <td>{{ paciente.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
           <td>
             <button type="button" name="editar" [routerLink]="['/pacientes/form', paciente.id]" class="btn btn-primary btn-sm">editar</button>

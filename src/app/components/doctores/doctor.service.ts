@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Doctor } from './doctor';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, catchError, tap } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
-import swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { tap, map, catchError } from 'rxjs/operators';
+import { throwError, Observable } from 'rxjs';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
+import swal from 'sweetalert2';
 
-@Injectable()
+import { Doctor } from './doctor';
+
+@Injectable({
+  providedIn: 'root'
+})
 export class DoctorService {
+
   private urlEndPoint = 'http://localhost:8080/api/doctores';
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });

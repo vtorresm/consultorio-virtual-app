@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { tap } from 'rxjs/operators';
 import { Doctor } from './doctor';
 import { DoctorService } from './doctor.service';
+
 import swal from 'sweetalert2';
-import { tap } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-doctores',
-  templateUrl: './doctores.component.html'
+  templateUrl: './doctores.component.html',
+  styleUrls: ['./doctores.component.css']
 })
 export class DoctoresComponent implements OnInit {
 
@@ -17,9 +19,7 @@ export class DoctoresComponent implements OnInit {
   constructor(private doctorService: DoctorService,
               private activatedRoute: ActivatedRoute) { }
 
-  // tslint:disable-next-line: typedef
-  ngOnInit() {
-
+  ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
       let page: number = +params.get('page');
 

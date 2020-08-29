@@ -1,4 +1,4 @@
-<div class="card border-primary mb-3">
+<div class="card mb-3">
   <div class="card-header">Pacientes</div>
   <div class="card-body text-primary">
     <h5 class="card-title">Listado de pacientes</h5>
@@ -10,21 +10,21 @@
     <div *ngIf="pacientes?.length == 0" class="alert alert-info">
       No hay registros en la base de datos!
     </div>
-    <table class="table table-bordered table-striped" *ngIf="pacientes?.length>0">
+    <table class="table table-responsive table-dark table-bordered table-striped" *ngIf="pacientes?.length>0">
       <thead>
         <tr>
           <th>id</th>
           <th>nombre</th>
           <th>apellido</th>
           <th>dni</th>
-          <th>genero</th>
-          <th>fecha</th>
+          <!-- <th>genero</th> -->
           <th>email</th>
-          <th>celular</th>
-          <th>distrito</th>
+          <!-- <th>celular</th> -->
+          <!-- <th>distrito</th>
           <th>direccion</th>
           <th>referencia</th>
-          <th>interior</th>
+          <th>interior</th> -->
+          <th>Creacion</th>
           <th>
             editar
           </th>
@@ -35,15 +35,15 @@
         <tr *ngFor="let paciente of pacientes">
           <td>{{ paciente.id }}</td>
           <td>{{ paciente.nombre }}</td>
-          <td>{{ paciente.apellido | uppercase }}</td>
+          <td>{{ paciente.apellido }}</td>
           <td>{{ paciente.dni }}</td>
-          <td>{{ paciente.genero }}</td>
           <td>{{ paciente.email }}</td>
-          <td>{{ paciente.celular }}</td>
+          <!-- <td>{{ paciente.genero }}</td>
+          <td>{{ paciente.celular }}</td> 
           <td>{{ paciente.distrito }}</td>
           <td>{{ paciente.direccion }}</td>
           <td>{{ paciente.referencia }}</td>
-          <td>{{ paciente.interior }}</td>
+          <td>{{ paciente.interior }}</td> -->
           <td>{{ paciente.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
           <td>
             <button type="button" name="editar" [routerLink]="['/pacientes/form', paciente.id]" class="btn btn-primary btn-sm">editar</button>

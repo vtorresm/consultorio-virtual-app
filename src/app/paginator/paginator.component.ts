@@ -15,12 +15,14 @@ export class PaginatorComponent implements OnInit, OnChanges {
 
   constructor() { }
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     this.initPaginator();
   }
 
+  // tslint:disable-next-line: typedef
   ngOnChanges(changes: SimpleChanges) {
-    let paginadorActualizado = changes['paginador'];
+    const paginadorActualizado = changes.paginador;
 
     if (paginadorActualizado.previousValue) {
       this.initPaginator();
@@ -33,9 +35,9 @@ export class PaginatorComponent implements OnInit, OnChanges {
     this.hasta = Math.max(Math.min(this.paginador.totalPages, this.paginador.number + 4), 6);
 
     if (this.paginador.totalPages > 5) {
-      this.paginas = new Array(this.hasta - this.desde + 1).fill(0).map((_valor, indice) => indice + this.desde);
+      this.paginas = new Array(this.hasta - this.desde + 1).fill(0).map((valor, indice) => indice + this.desde);
     } else {
-      this.paginas = new Array(this.paginador.totalPages).fill(0).map((_valor, indice) => indice + 1);
+      this.paginas = new Array(this.paginador.totalPages).fill(0).map((valor, indice) => indice + 1);
     }
   }
 

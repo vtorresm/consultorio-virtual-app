@@ -1,0 +1,52 @@
+<!-- <div class="card border-primary mb-3">
+  <div class="card-header">Doctores</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Listado de doctores</h5>
+    <div class="my-2 text-left">
+      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/doctores/formDoctor']">
+        Crear Doctor
+      </button>
+    </div>
+    <div *ngIf="doctores?.length == 0" class="alert alert-info">
+      No hay registros en la base de datos!
+    </div>
+    <table class="table table-bordered table-striped" *ngIf="doctores?.length>0">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>nombre</th>
+          <th>apellido</th>
+          <th>email</th>
+          <th>celular</th>
+          <th>colegiatura</th>
+          <th>especialidad</th>
+          <th>contrasena</th>
+          <th>
+            editar
+          </th>
+          <th>eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let doctor of doctores">
+          <td>{{ doctor.id }}</td>
+          <td>{{ doctor.nombre }}</td>
+          <td>{{ doctor.apellido | uppercase }}</td>
+          <td>{{ doctor.email }}</td>
+          <td>{{ doctor.celular }}</td>
+          <td>{{ doctor.colegiatura }}</td>
+          <td>{{ doctor.especialidad }}</td>
+          <td>{{ doctor.contrasena }}</td>
+          <td>{{ doctor.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+          <td>
+            <button type="button" name="editar" [routerLink]="['/doctores/form', doctor.id]" class="btn btn-primary btn-sm">editar</button>
+          </td>
+          <td>
+            <button type="button" name="eliminar" (click)='delete(doctor)' class="btn btn-danger btn-sm">eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <paginator-nav *ngIf="paginador" [paginador]="paginador"></paginator-nav>
+  </div>
+</div> -->

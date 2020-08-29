@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Doctor } from './doctor';
-import { DoctorService } from './doctor.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DoctorService } from '../doctor.service';
+import { Doctor } from '../doctor';
+
 import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './formDoctor.component.html'
+  selector: 'app-editar-doctor',
+  templateUrl: './editar-doctor.component.html',
 })
-export class FormDoctoresComponent implements OnInit {
+export class EditarDoctorComponent implements OnInit {
 
   public doctor: Doctor = new Doctor();
   titulo = 'Crear Doctor';
@@ -19,8 +20,7 @@ export class FormDoctoresComponent implements OnInit {
               private router: Router,
               private activatedRoute: ActivatedRoute) { }
 
-  // tslint:disable-next-line: typedef
-  ngOnInit() {
+  ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
       const id = +params.get('id');
       if (id) {

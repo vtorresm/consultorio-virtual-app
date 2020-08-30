@@ -1,14 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-html{
-    position: relative;
-    min-height: 100%;
-  }
   body {
-    background: url(./assets/img/fondo.jpg) no-repeat center center fixed;
-    background-size: cover;
-    margin-bottom: 60px;
-  }
-  
-  .wrap{
-    padding-bottom: 60px;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(to right, #b92b27, #1565c0)
   }

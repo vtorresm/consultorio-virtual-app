@@ -23,6 +23,7 @@ import { AuthGuard } from './components/login/guards/auth.guard';
 import { RoleGuard } from './components/login/guards/role.guard';
 import { TokenInterceptor } from './components/login/interceptors/token.interceptor';
 import { AuthInterceptor } from './components/login/interceptors/auth.interceptor';
+import { DetalleDoctoresComponent } from './components/doctores/detalle-doctores/detalle-doctores.component';
 
 registerLocaleData(localeES, 'es');
 
@@ -58,6 +59,7 @@ const routes: Routes = [
     DoctoresComponent,
     EditarDoctorComponent,
     LoginComponent,
+    DetalleDoctoresComponent,
   ],
   imports: [
     BrowserModule,

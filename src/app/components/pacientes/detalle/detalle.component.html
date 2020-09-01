@@ -16,9 +16,10 @@
               <ul *ngIf="paciente" class="list-group text-dark mb-3">
                 <li class="list-group-item active">{{paciente.nombre}}</li>
                 <li class="list-group-item">{{paciente.apellido}}</li>
+                <li class="list-group-item">{{paciente.dni}}</li>
                 <li class="list-group-item">{{paciente.email}}</li>
                 <li class="list-group-item">{{paciente.createAt | date:"fullDate"}}</li>
-                <li class="list-group-item">{{paciente.region.nombre}}</li>
+                <!-- <li class="list-group-item">{{paciente.region.nombre}}</li> -->
               </ul>
 
               <div class="input-group mb-3" *ngIf="authService.hasRole('ROLE_ADMIN')">

@@ -29,7 +29,7 @@ export class DetalleDoctoresComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  seleccionarFoto(event) {
+  seleccionarFoto(event): void {
     this.fotoSeleccionada = event.target.files[0];
     this.progreso = 0;
     console.log(this.fotoSeleccionada);
@@ -43,8 +43,7 @@ export class DetalleDoctoresComponent implements OnInit {
     }
   }
 
-  // tslint:disable-next-line: typedef
-  subirFoto() {
+  subirFoto(): void {
     if (!this.fotoSeleccionada) {
       swal.fire('Error Upload: ', 'Debe seleccionar una foto', 'error');
     } else {

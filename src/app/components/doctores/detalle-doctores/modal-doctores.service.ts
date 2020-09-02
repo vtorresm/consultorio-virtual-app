@@ -16,13 +16,11 @@ export class ModalDoctoresService {
     return this.notificacionUpload;
   }
 
-  // tslint:disable-next-line: typedef
-  abrirModal() {
+  abrirModal(): void {
     this.modal = true;
   }
 
-  // tslint:disable-next-line: typedef
-  cerrarModal() {
+  cerrarModal(): void {
     this.modal = false;
   }
 }

@@ -33,7 +33,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let doctor of doctores">
-              <td>{{ doctor.id }}</td>
+              <td><button type="button" [routerLink]="['/doctores/imagen', doctor.id]" class="btn btn-success btn-sm"></button>>{{ doctor.id }}</button></td>
               <td>{{ doctor.nombre }}</td>
               <td>{{ doctor.apellido | uppercase }}</td>
               <td>{{ doctor.dni }}</td>

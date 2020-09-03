@@ -46,6 +46,10 @@ const routes: Routes = [
   },
   { path: 'doctores/editar-doctor', component: EditarDoctorComponent },
   { path: 'doctores/editar-doctor/:id', component: EditarDoctorComponent },
+  {
+    path: 'doctores/imagen/:id',
+    component: DetalleDoctoresComponent
+  },
   { path: 'login', component: LoginComponent },
 ];
 @NgModule({
@@ -76,4 +80,4 @@ const routes: Routes = [
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -67,8 +67,7 @@ export class DetalleDoctoresComponent implements OnInit {
     }
   }
 
-  // tslint:disable-next-line: typedef
-  cerrarModal() {
+  cerrarModal(): void {
     this.modalService.cerrarModal();
     this.fotoSeleccionada = null;
     this.progreso = 0;

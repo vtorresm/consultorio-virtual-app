@@ -18,11 +18,13 @@
               <th>id</th>
               <th>nombre</th>
               <th>apellido</th>
+              <th>DNI</th>
               <th>email</th>
               <th>celular</th>
               <th>colegiatura</th>
               <th>especialidad</th>
-              <th>contrasena</th>
+              <!-- <th>contrasena</th> -->
+              <th>Fecha</th>
               <th>
                 editar
               </th>
@@ -34,11 +36,12 @@
               <td>{{ doctor.id }}</td>
               <td>{{ doctor.nombre }}</td>
               <td>{{ doctor.apellido | uppercase }}</td>
+              <td>{{ doctor.dni }}</td>
               <td>{{ doctor.email }}</td>
               <td>{{ doctor.celular }}</td>
-              <td>{{ doctor.colegiatura }}</td>
+              <td>{{ doctor.codigoColegiatura }}</td>
               <td>{{ doctor.especialidad }}</td>
-              <td>{{ doctor.contrasena }}</td>
+              <!-- <td>{{ doctor.contrasena }}</td> -->
               <td>{{ doctor.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
               <td>
                 <button type="button" name="editar" [routerLink]="['/doctores/editar-doctor', doctor.id]" class="btn btn-primary btn-sm">editar</button>

@@ -23,7 +23,7 @@ export class DetalleDoctoresComponent implements OnInit {
   constructor(
     private doctorService: DoctorService,
     private authService: AuthService,
-    private modalService: ModalDoctoresService
+    public modalDoctorService: ModalDoctoresService
     ) { }
 
   ngOnInit(): void {
@@ -56,7 +56,7 @@ export class DetalleDoctoresComponent implements OnInit {
             const response: any = event.body;
             this.doctor = response.doctor as Doctor;
 
-            this.modalService.notificarUpload.emit(this.doctor);
+            this.modalDoctorService.notificarUpload.emit(this.doctor);
             swal.fire(
               'La foto se ha subido completamente!',
               response.mensaje,
@@ -69,7 +69,7 @@ export class DetalleDoctoresComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   cerrarModal() {
-    this.modalService.cerrarModal();
+    this.modalDoctorService.cerrarModal();
     this.fotoSeleccionada = null;
     this.progreso = 0;
   }

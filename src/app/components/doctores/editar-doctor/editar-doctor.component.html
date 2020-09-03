@@ -35,6 +35,19 @@
             </div>
           </div>
         </div>
+
+        
+        <div class="form-group row">
+          <label for="dni" class="col-form-label col-sm-2">DNI</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="doctor.dni" name="dni" #dni="ngModel"> <!-- required -->
+            <div class="alert alert-danger" *ngIf="dni.invalid && (dni.dirty || dni.touched)">
+              <div *ngIf="dni.errors.required">
+                DNI es requerido
+              </div>
+            </div>
+          </div>
+        </div>
   
         <div class="form-group row">
           <label for="email" class="col-form-label col-sm-2">Email</label>
@@ -64,11 +77,11 @@
         </div>
   
         <div class="form-group row">
-          <label for="colegiatura" class="col-form-label col-sm-2">Colegiatura</label>
+          <label for="codigoColegiatura" class="col-form-label col-sm-2">Colegiatura</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" [(ngModel)]="doctor.colegiatura" name="colegiatura" #colegiatura="ngModel"> <!-- required -->
-            <div class="alert alert-danger" *ngIf="colegiatura.invalid && (colegiatura.dirty || colegiatura.touched)">
-              <div *ngIf="colegiatura.errors.required">
+            <input type="text" class="form-control" [(ngModel)]="doctor.codigoColegiatura" name="codigoColegiatura" #codigoColegiatura="ngModel"> <!-- required -->
+            <div class="alert alert-danger" *ngIf="codigoColegiatura.invalid && (codigoColegiatura.dirty || codigoColegiatura.touched)">
+              <div *ngIf="codigoColegiatura.errors.required">
                 Colegiatura es requerido
               </div>
             </div>

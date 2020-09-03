@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'paginator-nav',
-  templateUrl: './paginator.component.html'
+  // tslint:disable-next-line: component-selector
+  selector: 'paginator-doctor',
+  templateUrl: './paginator-doctor.component.html'
 })
-export class PaginatorComponent implements OnInit, OnChanges {
+export class PaginatorDoctorComponent implements OnInit, OnChanges {
 
   @Input() paginador: any;
 

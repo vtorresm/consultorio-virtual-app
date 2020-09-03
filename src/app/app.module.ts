@@ -13,6 +13,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormComponent } from './components/pacientes/form.component';
 import { FormsModule } from '@angular/forms';
 import { PaginatorComponent } from './paginator/paginator.component';
+import { PaginatorDoctorComponent } from './components/doctores/paginator-doctor/paginator-doctor.component';
 import { EditarDoctorComponent } from './components/doctores/editar-doctor/editar-doctor.component';
 import { LoginComponent } from './components/login/login.component';
 
@@ -44,8 +45,10 @@ const routes: Routes = [
     canActivate: [AuthGuard, RoleGuard],
     data: { role: 'ROLE_ADMIN' },
   },
+  { path: 'doctores/page/:page', component: DoctoresComponent },
   { path: 'doctores/editar-doctor', component: EditarDoctorComponent },
   { path: 'doctores/editar-doctor/:id', component: EditarDoctorComponent },
+  { path: 'doctores/page/:page', component: DoctoresComponent },
   { path: 'login', component: LoginComponent },
 ];
 @NgModule({
@@ -56,6 +59,7 @@ const routes: Routes = [
     PacientesComponent,
     FormComponent,
     PaginatorComponent,
+    PaginatorDoctorComponent,
     DoctoresComponent,
     EditarDoctorComponent,
     LoginComponent,

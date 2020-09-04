@@ -9,4 +9,5 @@ export class Doctor {
     especialidad: string;
     contrasena: string;
     createAt: string;
+    foto: string;
   }

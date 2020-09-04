@@ -24,9 +24,9 @@
                   <li class="list-group-item">{{ doctor.dni }}</li>
                   <li class="list-group-item">{{ doctor.email }}</li>
                   <li class="list-group-item">
-                    {{ paciente.createAt | date: "fullDate" }}
+                    {{ doctor.createAt | date: "fullDate" }}
                   </li>
-                  <!-- <li class="list-group-item">{{paciente.region.nombre}}</li> -->
+                  <!-- <li class="list-group-item">{{doctor.region.nombre}}</li> -->
                 </ul>
 
                 <div
@@ -74,11 +74,11 @@
 
               <div class="col-sm">
                 <img
-                  *ngIf="paciente?.foto"
+                  *ngIf="doctor?.foto"
                   src="http://localhost:8080/api/uploads/img/{{
-                    paciente.foto
+                    doctor.foto
                   }}"
-                  alt="{{ paciente.foto }}"
+                  alt="{{ doctor.foto }}"
                   class="img-thumbnail rounded"
                 />
               </div>

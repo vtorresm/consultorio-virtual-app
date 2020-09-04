@@ -1,58 +1,94 @@
-<h1>Doctores</h1>
+<app-detalle-doctores *ngIf="doctorSeleccionado" [doctor] ="doctorSeleccionado"></app-detalle-doctores>
 
-    <div class="card border-primary mb-3">
-      <div class="card-header">Doctores</div>
-      <div class="card-body text-primary">
-        <h5 class="card-title">Listado de doctores</h5>
-        <div class="my-2 text-left">
-          <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/doctores/editar-doctor']">
-            Crear Doctor
-          </button>
-        </div>
-        <div *ngIf="doctores?.length == 0" class="alert alert-info">
-          No hay registros en la base de datos!
-        </div>
-        <table class="table table-bordered table-striped" *ngIf="doctores?.length>0">
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>nombre</th>
-              <th>apellido</th>
-              <th>DNI</th>
-              <th>email</th>
-              <th>celular</th>
-              <th>colegiatura</th>
-              <th>especialidad</th>
-              <!-- <th>contrasena</th> -->
-              <th>Fecha</th>
-              <th>
-                editar
-              </th>
-              <th>eliminar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let doctor of doctores">
-              <td><button type="button" [routerLink]="['/doctores/imagen', doctor.id]" class="btn btn-success btn-sm"></button>>{{ doctor.id }}</button></td>
-              <td>{{ doctor.nombre }}</td>
-              <td>{{ doctor.apellido | uppercase }}</td>
-              <td>{{ doctor.dni }}</td>
-              <td>{{ doctor.email }}</td>
-              <td>{{ doctor.celular }}</td>
-              <td>{{ doctor.codigoColegiatura }}</td>
-              <td>{{ doctor.especialidad }}</td>
-              <!-- <td>{{ doctor.contrasena }}</td> -->
-              <td>{{ doctor.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
-              <td>
-                <button type="button" name="editar" [routerLink]="['/doctores/editar-doctor', doctor.id]" class="btn btn-primary btn-sm">editar</button>
-              </td>
-              <td>
-                <button type="button" name="eliminar" (click)='delete(doctor)' class="btn btn-danger btn-sm">eliminar</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <paginator-nav *ngIf="paginador" [paginador]="paginador"></paginator-nav>
-      </div>
+<div class="card border-primary mb-3">
+  <div class="card-header">Doctores</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Listado de doctores</h5>
+    <div class="my-2 text-left">
+      <button
+        class="btn btn-rounded btn-primary"
+        type="button"
+        [routerLink]="['/doctores/editar-doctor']"
+      >
+        Crear Doctor
+      </button>
     </div>
-    
+    <div *ngIf="doctores?.length == 0" class="alert alert-info">
+      No hay registros en la base de datos!
+    </div>
+    <table
+      class="table table-bordered table-striped"
+      *ngIf="doctores?.length > 0"
+    >
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>nombre</th>
+          <th>apellido</th>
+          <th>DNI</th>
+          <th>email</th>
+          <th>celular</th>
+          <th>colegiatura</th>
+          <th>especialidad</th>
+          <!-- <th>contrasena</th> -->
+          <th>Fecha</th>
+          <th>editar</th>
+          <th>eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let doctor of doctores">
+          <td>
+            <img
+              (click)="abrirModal(doctor)"
+              *ngIf="doctor?.foto"
+              src="http://localhost:8080/api/uploads/img/{{ doctor.foto }}"
+              alt="{{ doctor.foto }}"
+              class="img-thumbnail rounded"
+              style="width: 64px; cursor: pointer"
+            />
+
+            <img
+              (click)="abrirModal(doctor)"
+              *ngIf="!doctor?.foto"
+              src="http://localhost:8080/images/no-usuario.png"
+              alt="Sin foto"
+              class="img-thumbnail rounded"
+              style="width: 64px; cursor: pointer"
+            />
+          </td>
+          <td>{{ doctor.nombre }}</td>
+          <td>{{ doctor.apellido | uppercase }}</td>
+          <td>{{ doctor.dni }}</td>
+          <td>{{ doctor.email }}</td>
+          <td>{{ doctor.celular }}</td>
+          <td>{{ doctor.codigoColegiatura }}</td>
+          <td>{{ doctor.especialidad }}</td>
+          <!-- <td>{{ doctor.contrasena }}</td> -->
+          <td>{{ doctor.createAt | date: "EEEE dd, MMMM yyyy" }}</td>
+          <td>
+            <button
+              type="button"
+              name="editar"
+              [routerLink]="['/doctores/editar-doctor', doctor.id]"
+              class="btn btn-primary btn-sm"
+            >
+              editar
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              name="eliminar"
+              (click)="delete(doctor)"
+              class="btn btn-danger btn-sm"
+            >
+              eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <paginator-nav *ngIf="paginador" [paginador]="paginador"></paginator-nav>
+  </div>
+</div>

@@ -2,17 +2,16 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { tap, map, catchError } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 
 import swal from 'sweetalert2';
 
 import { Doctor } from './doctor';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DoctorService {
-
   private urlEndPoint = 'http://localhost:8080/api/doctores';
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -71,19 +70,17 @@ export class DoctorService {
   }
 
   update(doctor: Doctor): Observable<any> {
-    return this.http
-      .put<any>(`${this.urlEndPoint}/${doctor.id}`, doctor)
-      .pipe(
-        catchError((e) => {
-          if (e.status === 400) {
-            return throwError(e);
-          }
-          if (e.error.mensaje) {
-            console.error(e.error.mensaje);
-          }
+    return this.http.put<any>(`${this.urlEndPoint}/${doctor.id}`, doctor).pipe(
+      catchError((e) => {
+        if (e.status === 400) {
           return throwError(e);
-        })
-      );
+        }
+        if (e.error.mensaje) {
+          console.error(e.error.mensaje);
+        }
+        return throwError(e);
+      })
+    );
   }
 
   delete(id: number): Observable<Doctor> {
@@ -95,5 +92,22 @@ export class DoctorService {
         return throwError(e);
       })
     );
+  }
+
+  subirFoto(archivo: File, id): Observable<HttpEvent<{}>> {
+    const formData = new FormData();
+    formData.append('photo', archivo);
+    formData.append('id', id);
+
+    const req = new HttpRequest(
+      'POST',
+      `${this.urlEndPoint}/upload`,
+      formData,
+      {
+        reportProgress: true,
+      }
+    );
+
+    return this.http.request(req);
   }
 }

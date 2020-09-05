@@ -1,7 +1,7 @@
 <app-detalle-doctores *ngIf="doctorSeleccionado" [doctor] ="doctorSeleccionado"></app-detalle-doctores>
 
-<div class="card border-primary mb-3">
-  <div class="card-header">Doctores</div>
+<div class="card mb-3">
+  <div class="card-header">Doctores de Paracas Salud</div>
   <div class="card-body text-primary">
     <h5 class="card-title">Listado de doctores</h5>
     <div class="my-2 text-left">
@@ -17,7 +17,7 @@
       No hay registros en la base de datos!
     </div>
     <table
-      class="table table-bordered table-striped"
+      class="table table-responsive table-dark table-bordered table-striped"
       *ngIf="doctores?.length > 0"
     >
       <thead>
@@ -89,6 +89,6 @@
         </tr>
       </tbody>
     </table>
-    <paginator-nav *ngIf="paginador" [paginador]="paginador"></paginator-nav>
+    <paginator-doctor *ngIf="paginador" [paginador]="paginador"></paginator-doctor>
   </div>
 </div>

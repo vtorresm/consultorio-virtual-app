@@ -3,14 +3,21 @@
   <div class="card-body text-primary">
     <h5 class="card-title">Listado de pacientes</h5>
     <div class="my-2 text-left">
-      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/pacientes/form']">
+      <button
+        class="btn btn-rounded btn-primary"
+        type="button"
+        [routerLink]="['/pacientes/form']"
+      >
         Crear Paciente
       </button>
     </div>
     <div *ngIf="pacientes?.length == 0" class="alert alert-info">
       No hay registros en la base de datos!
     </div>
-    <table class="table table-responsive table-dark table-bordered table-striped" *ngIf="pacientes?.length>0">
+    <table
+      class="table table-responsive table-dark table-bordered table-striped"
+      *ngIf="pacientes?.length > 0"
+    >
       <thead>
         <tr>
           <th>id</th>
@@ -25,9 +32,7 @@
           <th>referencia</th>
           <th>interior</th> -->
           <th>F. Creacion</th>
-          <th>
-            editar
-          </th>
+          <th>editar</th>
           <th>eliminar</th>
         </tr>
       </thead>
@@ -44,12 +49,26 @@
           <td>{{ paciente.direccion }}</td>
           <td>{{ paciente.referencia }}</td>
           <td>{{ paciente.interior }}</td> -->
-          <td>{{ paciente.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+          <td>{{ paciente.createAt | date: "EEEE dd, MMMM yyyy" }}</td>
           <td>
-            <button type="button" name="editar" [routerLink]="['/pacientes/form', paciente.id]" class="btn btn-primary btn-sm">editar</button>
+            <button
+              type="button"
+              name="editar"
+              [routerLink]="['/pacientes/form', paciente.id]"
+              class="btn btn-primary btn-sm"
+            >
+              editar
+            </button>
           </td>
           <td>
-            <button type="button" name="eliminar" (click)='delete(paciente)' class="btn btn-danger btn-sm">eliminar</button>
+            <button
+              type="button"
+              name="eliminar"
+              (click)="delete(paciente)"
+              class="btn btn-danger btn-sm"
+            >
+              eliminar
+            </button>
           </td>
         </tr>
       </tbody>

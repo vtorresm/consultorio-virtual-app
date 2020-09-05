@@ -25,11 +25,12 @@ import { RoleGuard } from './components/login/guards/role.guard';
 import { TokenInterceptor } from './components/login/interceptors/token.interceptor';
 import { AuthInterceptor } from './components/login/interceptors/auth.interceptor';
 import { DetalleDoctoresComponent } from './components/doctores/detalle-doctores/detalle-doctores.component';
+import { HomeComponent } from './home/home.component';
 
 registerLocaleData(localeES, 'es');
 
 const routes: Routes = [
-  { path: '', redirectTo: '/pacientes', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'pacientes', component: PacientesComponent },
   { path: 'doctores', component: DoctoresComponent },
   { path: 'pacientes/page/:page', component: PacientesComponent },
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'doctores/editar-doctor/:id', component: EditarDoctorComponent },
   { path: 'doctores/page/:page', component: DoctoresComponent },
   { path: 'login', component: LoginComponent },
+  { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
 @NgModule({
   declarations: [
@@ -64,6 +66,7 @@ const routes: Routes = [
     EditarDoctorComponent,
     LoginComponent,
     DetalleDoctoresComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

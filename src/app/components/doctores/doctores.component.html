@@ -1,4 +1,7 @@
-<app-detalle-doctores *ngIf="doctorSeleccionado" [doctor] ="doctorSeleccionado"></app-detalle-doctores>
+<app-detalle-doctores
+  *ngIf="doctorSeleccionado"
+  [doctor]="doctorSeleccionado"
+></app-detalle-doctores>
 
 <div class="card mb-3">
   <div class="card-header">Doctores de Paracas Salud</div>
@@ -30,10 +33,7 @@
           <th>celular</th>
           <th>colegiatura</th>
           <th>especialidad</th>
-          <!-- <th>contrasena</th> -->
-          <th>Fecha</th>
-          <th>editar</th>
-          <th>eliminar</th>
+          <th>Acción</th>
         </tr>
       </thead>
       <tbody>
@@ -65,30 +65,34 @@
           <td>{{ doctor.codigoColegiatura }}</td>
           <td>{{ doctor.especialidad }}</td>
           <!-- <td>{{ doctor.contrasena }}</td> -->
-          <td>{{ doctor.createAt | date: "EEEE dd, MMMM yyyy" }}</td>
+          <!-- <td>{{ doctor.createAt }}</td> -->
           <td>
-            <button
-              type="button"
-              name="editar"
-              [routerLink]="['/doctores/editar-doctor', doctor.id]"
-              class="btn btn-primary btn-sm"
-            >
-              editar
-            </button>
-          </td>
-          <td>
-            <button
-              type="button"
-              name="eliminar"
-              (click)="delete(doctor)"
-              class="btn btn-danger btn-sm"
-            >
-              eliminar
-            </button>
+            
+              <button
+                type="button"
+                name="editar"
+                [routerLink]="['/doctores/editar-doctor', doctor.id]"
+                class="btn btn-primary btn-sm"
+              >
+              <i class="fas fa-pencil-alt"></i>
+              </button> <br>
+           
+              <button
+                type="button"
+                name="eliminar"
+                (click)="delete(doctor)"
+                class="btn btn-danger btn-sm"
+              >
+              <i class="fas fa-trash"></i>
+              </button>
+          
           </td>
         </tr>
       </tbody>
     </table>
-    <paginator-doctor *ngIf="paginador" [paginador]="paginador"></paginator-doctor>
+    <paginator-doctor
+      *ngIf="paginador"
+      [paginador]="paginador"
+    ></paginator-doctor>
   </div>
 </div>

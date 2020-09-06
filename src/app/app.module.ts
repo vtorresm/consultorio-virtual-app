@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { PacientesComponent } from './components/pacientes/pacientes.component';
 import { PacienteService } from './components/pacientes/paciente.service';
 import { DoctoresComponent } from './components/doctores/doctores.component';
@@ -12,7 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormComponent } from './components/pacientes/form.component';
 import { FormsModule } from '@angular/forms';
-import { PaginatorComponent } from './paginator/paginator.component';
+import { PaginatorComponent } from './components/pacientes/paginator/paginator.component';
 import { PaginatorDoctorComponent } from './components/doctores/paginator-doctor/paginator-doctor.component';
 import { EditarDoctorComponent } from './components/doctores/editar-doctor/editar-doctor.component';
 import { LoginComponent } from './components/login/login.component';
@@ -25,7 +25,7 @@ import { RoleGuard } from './components/login/guards/role.guard';
 import { TokenInterceptor } from './components/login/interceptors/token.interceptor';
 import { AuthInterceptor } from './components/login/interceptors/auth.interceptor';
 import { DetalleDoctoresComponent } from './components/doctores/detalle-doctores/detalle-doctores.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 
 registerLocaleData(localeES, 'es');
 

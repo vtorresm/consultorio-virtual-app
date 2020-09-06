@@ -1,4 +1,9 @@
+.container {
+  min-height: calc(100vh - 100px - 300px);
+}
+
 .box {
+  min-height: calc(100vh - 100px - 300px);
   width: 500px;
   padding: 40px;
   position: absolute;

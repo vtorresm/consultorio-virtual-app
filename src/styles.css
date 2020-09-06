@@ -186,7 +186,7 @@ section { padding: 120px 0; }
 }
 
 .portfolio-details a h2, .portfolio-details a p {
-  color: var(--white-color);
+  color: var(--dark-color);
 }
 
 /* //////////////
@@ -200,7 +200,7 @@ section { padding: 120px 0; }
 
 .member-details {
   position: absolute;
-  color: var(--white-color);
+  color: var(--dark-color);
   bottom: 0;
   left: 20px;
 }
@@ -332,6 +332,8 @@ footer {
   bottom: 0px;
   text-align: center;
   color: var(--white-color);
+  height: 300px;
+  width: 100%;
 }
 
 footer a {

@@ -1,128 +1,228 @@
-<ul class="alert alert-danger" *ngIf="errores?.length > 0">
+<br>
+<br>
+<br>
+<div class="container mt-5">
+  <ul class="alert alert-danger" *ngIf="errores?.length > 0">
     <li *ngFor="let err of errores">
       {{ err }}
     </li>
   </ul>
-  
+
   <div class="card bg-dark text-white">
     <div class="card-header">{{ titulo }}</div>
     <div class="card-body">
-  
       <form #doctorForm="ngForm">
         <div class="form-group row">
           <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" [(ngModel)]="doctor.nombre" name="nombre" #nombre="ngModel"> <!-- required minlength="4" -->
-            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
-              <div *ngIf="nombre.errors.required">
-                Nombre es requerido
-              </div>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="doctor.nombre"
+              name="nombre"
+              #nombre="ngModel"
+            />
+            <!-- required minlength="4" -->
+            <div
+              class="alert alert-danger"
+              *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+            >
+              <div *ngIf="nombre.errors.required">Nombre es requerido</div>
               <div *ngIf="nombre.errors.minlength">
                 Nombre debe tener al menos 4 caracteres
               </div>
             </div>
           </div>
         </div>
-  
+
         <div class="form-group row">
           <label for="apellido" class="col-form-label col-sm-2">Apellido</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" [(ngModel)]="doctor.apellido" name="apellido" #apellido="ngModel"> <!-- required -->
-            <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
-              <div *ngIf="apellido.errors.required">
-                Apellido es requerido
-              </div>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="doctor.apellido"
+              name="apellido"
+              #apellido="ngModel"
+            />
+            <!-- required -->
+            <div
+              class="alert alert-danger"
+              *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
+            >
+              <div *ngIf="apellido.errors.required">Apellido es requerido</div>
             </div>
           </div>
         </div>
 
-        
         <div class="form-group row">
           <label for="dni" class="col-form-label col-sm-2">DNI</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" [(ngModel)]="doctor.dni" name="dni" #dni="ngModel"> <!-- required -->
-            <div class="alert alert-danger" *ngIf="dni.invalid && (dni.dirty || dni.touched)">
-              <div *ngIf="dni.errors.required">
-                DNI es requerido
-              </div>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="doctor.dni"
+              name="dni"
+              #dni="ngModel"
+            />
+            <!-- required -->
+            <div
+              class="alert alert-danger"
+              *ngIf="dni.invalid && (dni.dirty || dni.touched)"
+            >
+              <div *ngIf="dni.errors.required">DNI es requerido</div>
             </div>
           </div>
         </div>
-  
+
         <div class="form-group row">
           <label for="email" class="col-form-label col-sm-2">Email</label>
           <div class="col-sm-6">
-            <input type="email" class="form-control" [(ngModel)]="doctor.email" name="email" #email="ngModel"> <!-- required email -->
-            <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
-              <div *ngIf="email.errors.required">
-                Email es requerido
-              </div>
+            <input
+              type="email"
+              class="form-control"
+              [(ngModel)]="doctor.email"
+              name="email"
+              #email="ngModel"
+            />
+            <!-- required email -->
+            <div
+              class="alert alert-danger"
+              *ngIf="email.invalid && (email.dirty || email.touched)"
+            >
+              <div *ngIf="email.errors.required">Email es requerido</div>
               <div *ngIf="email.errors.email">
                 Email debe tener un formato válido
               </div>
             </div>
           </div>
         </div>
-  
+
         <div class="form-group row">
           <label for="celular" class="col-form-label col-sm-2">Celular</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" [(ngModel)]="doctor.celular" name="celular" #celular="ngModel"> <!-- required -->
-            <div class="alert alert-danger" *ngIf="celular.invalid && (celular.dirty || celular.touched)">
-              <div *ngIf="celular.errors.required">
-                Celular es requerido
-              </div>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="doctor.celular"
+              name="celular"
+              #celular="ngModel"
+            />
+            <!-- required -->
+            <div
+              class="alert alert-danger"
+              *ngIf="celular.invalid && (celular.dirty || celular.touched)"
+            >
+              <div *ngIf="celular.errors.required">Celular es requerido</div>
             </div>
           </div>
         </div>
-  
+
         <div class="form-group row">
-          <label for="codigoColegiatura" class="col-form-label col-sm-2">Colegiatura</label>
+          <label for="codigoColegiatura" class="col-form-label col-sm-2"
+            >Colegiatura</label
+          >
           <div class="col-sm-6">
-            <input type="text" class="form-control" [(ngModel)]="doctor.codigoColegiatura" name="codigoColegiatura" #codigoColegiatura="ngModel"> <!-- required -->
-            <div class="alert alert-danger" *ngIf="codigoColegiatura.invalid && (codigoColegiatura.dirty || codigoColegiatura.touched)">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="doctor.codigoColegiatura"
+              name="codigoColegiatura"
+              #codigoColegiatura="ngModel"
+            />
+            <!-- required -->
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                codigoColegiatura.invalid &&
+                (codigoColegiatura.dirty || codigoColegiatura.touched)
+              "
+            >
               <div *ngIf="codigoColegiatura.errors.required">
                 Colegiatura es requerido
               </div>
             </div>
           </div>
         </div>
-  
+
         <div class="form-group row">
-          <label for="especialidad" class="col-form-label col-sm-2">Especialidad</label>
+          <label for="especialidad" class="col-form-label col-sm-2"
+            >Especialidad</label
+          >
           <div class="col-sm-6">
-            <input type="text" class="form-control" [(ngModel)]="doctor.especialidad" name="especialidad" #especialidad="ngModel"> <!-- required -->
-            <div class="alert alert-danger" *ngIf="especialidad.invalid && (especialidad.dirty || especialidad.touched)">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="doctor.especialidad"
+              name="especialidad"
+              #especialidad="ngModel"
+            />
+            <!-- required -->
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                especialidad.invalid &&
+                (especialidad.dirty || especialidad.touched)
+              "
+            >
               <div *ngIf="especialidad.errors.required">
                 Especialidad es requerido
               </div>
             </div>
           </div>
         </div>
-  
+
         <div class="form-group row">
-          <label for="contrasena" class="col-form-label col-sm-2">Contraseña</label>
+          <label for="contrasena" class="col-form-label col-sm-2"
+            >Contraseña</label
+          >
           <div class="col-sm-6">
-            <input type="text" class="form-control" [(ngModel)]="doctor.contrasena" name="contrasena" #contrasena="ngModel"> <!-- required -->
-            <div class="alert alert-danger" *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="doctor.contrasena"
+              name="contrasena"
+              #contrasena="ngModel"
+            />
+            <!-- required -->
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                contrasena.invalid && (contrasena.dirty || contrasena.touched)
+              "
+            >
               <div *ngIf="contrasena.errors.required">
                 Contraseña es requerido
               </div>
             </div>
           </div>
         </div>
-  
+
         <div class="form-group row">
           <div class="col-sm-6">
-            <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!doctor.id else elseBlock" [disabled]="!doctorForm.form.valid">Agregar Doctor</button>
-  
+            <button
+              class="btn btn-primary"
+              role="button"
+              (click)="create()"
+              *ngIf="!doctor.id; else elseBlock"
+              [disabled]="!doctorForm.form.valid"
+            >
+              Agregar Doctor
+            </button>
+
             <ng-template #elseBlock>
-              <button class="btn btn-primary" role="button" (click)='update()' [disabled]="!doctorForm.form.valid">Editar</button>
+              <button
+                class="btn btn-primary"
+                role="button"
+                (click)="update()"
+                [disabled]="!doctorForm.form.valid"
+              >
+                Editar
+              </button>
             </ng-template>
           </div>
         </div>
       </form>
-  
     </div>
   </div>
-  
+</div>

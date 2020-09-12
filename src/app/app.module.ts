@@ -26,6 +26,7 @@ import { TokenInterceptor } from './components/login/interceptors/token.intercep
 import { AuthInterceptor } from './components/login/interceptors/auth.interceptor';
 import { DetalleDoctoresComponent } from './components/doctores/detalle-doctores/detalle-doctores.component';
 import { HomeComponent } from './components/home/home.component';
+import { ReservasComponent } from './components/reservas/reservas.component';
 
 registerLocaleData(localeES, 'es');
 
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'pacientes', component: PacientesComponent },
   { path: 'doctores', component: DoctoresComponent },
+  { path: 'reservas', component: ReservasComponent },
   { path: 'pacientes/page/:page', component: PacientesComponent },
   {
     path: 'pacientes/form',
@@ -67,6 +69,7 @@ const routes: Routes = [
     LoginComponent,
     DetalleDoctoresComponent,
     HomeComponent,
+    ReservasComponent,
   ],
   imports: [
     BrowserModule,

@@ -51,6 +51,16 @@ h2 { font-size: 48px; margin-bottom: 30px; }
 h3 { font-size: 33px; }
 h5 { margin-bottom: 0px; }
 
+#logo-tam {
+  height: 48px;
+  width: 48px;
+}
+
+.text-black {
+  color: #f5f5f5;
+  font-weight: 500;
+}
+
 p {
   font-size: 18px;
   color: var(--dark-color);

@@ -27,14 +27,15 @@ import { AuthInterceptor } from './components/login/interceptors/auth.intercepto
 import { DetalleDoctoresComponent } from './components/doctores/detalle-doctores/detalle-doctores.component';
 import { HomeComponent } from './components/home/home.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
+import { EditarReservaComponent } from './components/reservas/editar-reserva/editar-reserva.component';
+import { DetalleReservaComponent } from './components/reservas/detalle-reserva/detalle-reserva.component';
+import { PaginatorReservaComponent } from './components/reservas/paginator-reserva/paginator-reserva.component';
 
 registerLocaleData(localeES, 'es');
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'pacientes', component: PacientesComponent },
-  { path: 'doctores', component: DoctoresComponent },
-  { path: 'reservas', component: ReservasComponent },
   { path: 'pacientes/page/:page', component: PacientesComponent },
   {
     path: 'pacientes/form',
@@ -48,10 +49,25 @@ const routes: Routes = [
     canActivate: [AuthGuard, RoleGuard],
     data: { role: 'ROLE_ADMIN' },
   },
+  { path: 'doctores', component: DoctoresComponent },
   { path: 'doctores/page/:page', component: DoctoresComponent },
   { path: 'doctores/editar-doctor', component: EditarDoctorComponent },
   { path: 'doctores/editar-doctor/:id', component: EditarDoctorComponent },
   { path: 'doctores/page/:page', component: DoctoresComponent },
+  { path: 'reservas', component: ReservasComponent },
+  { path: 'reservas/page/:page', component: ReservasComponent },
+  {
+    path: 'reservas/editar-reserva',
+    component: EditarReservaComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: { role: 'ROLE_ADMIN' },
+  },
+  {
+    path: 'reservas/editar-reserva/:id',
+    component: EditarReservaComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: { role: 'ROLE_ADMIN' },
+  },
   { path: 'login', component: LoginComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
@@ -70,6 +86,9 @@ const routes: Routes = [
     DetalleDoctoresComponent,
     HomeComponent,
     ReservasComponent,
+    EditarReservaComponent,
+    DetalleReservaComponent,
+    PaginatorReservaComponent,
   ],
   imports: [
     BrowserModule,

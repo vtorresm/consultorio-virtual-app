@@ -1,0 +1,91 @@
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr />
+<ul class="alert alert-danger" *ngIf="errores?.length > 0">
+  <li *ngFor="let err of errores">
+    {{ err }}
+  </li>
+</ul>
+<div class="card bg-dark text-white">
+  <div class="card-header">{{ titulo }}</div>
+  <div class="card-body">
+    <form #reservaForm="ngForm">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputState">Tipo Documento</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>DNI</option>
+            <option>Carnet de Extranjeria</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">N° Documento</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Ingrese N° de documento"
+            [(ngModel)]="reserva.nroDocumento"
+            name="nroDocumento"
+            #nroDocumento="ngModel"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputState">Especialidad</label>
+          <select id="inputState" class="form-control">
+            <option value="seleccionar selected">Seleccionar</option>
+            <option value="cadiologia">Cadiologia</option>
+            <option value="pediatria">Pediatria</option>
+            <option value="traumatologia">Traumatologia</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">Medico</label>
+          <select id="inputState" class="form-control">
+            <option>Joe Doe</option>
+            <option>Juan Hernandez</option>
+            <option>Maria de la Cruz</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputCity">Fecha de cita</label>
+          <input type="date" class="form-control" id="inputCity" />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">Hora de cita</label>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <button type="submit" class="btn btn-primary btn-block">
+            Reserva tu cita
+          </button>
+        </div>
+        <div class="form-group col-md-4">
+          <button type="submit" class="btn btn-danger btn-block">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />

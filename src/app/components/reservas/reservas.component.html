@@ -1,35 +1,80 @@
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<form>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container text-center mt-3">
+  <button
+    class="btn btn-rounded btn-primary"
+    type="button"
+    [routerLink]="['/reservas/editar-reserva']"
+  >
+    <h5><b>Crear Reserva</b></h5>
+  </button>
+</div>
+<div *ngIf="reservas?.length == 0" class="alert alert-info">
+  No hay registros en la base de datos!
+</div>
+<br />
+<br />
+<div class="container">
   <div class="row">
-    <div class="col">
-      <div class="form-group">
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+    <div class="col-lg-12">
+      <div class="table-responsive">
+        <table
+          id="example"
+          class="table table-striped table-bordered"
+          style="width: 100%"
+          *ngIf="reservas?.length > 0"
+        >
+          <thead class="thead-dark">
+            <tr>
+              <th>N° Reserva</th>
+              <th>Tipo Doc</th>
+              <th>N° Doc</th>
+              <th>Especialidad</th>
+              <th>Medico</th>
+              <th>Fecha cita</th>
+              <th>Hora cita</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let reserva of reservas">
+              <td>{{ reserva.id }}</td>
+              <td>{{ reserva.tipoDocuemnto }}</td>
+              <td>{{ reserva.nroDocumento }}</td>
+              <td>{{ reserva.especialidad }}</td>
+              <td>{{ reserva.medico }}</td>
+              <td>{{ reserva.hora }}</td>
+              <td>{{ reserva.precio }}</td>
+              <td>{{ reserva.createAt }}</td>
+              <td> <button
+                type="button"
+                name="editar"
+                [routerLink]="['/reservas/editar-reserva', reserva.id]"
+                class="btn btn-primary btn-sm"
+              >
+              <i class="fas fa-user-edit"></i>
+              </button></td>
+              <td> <button
+                type="button"
+                name="eliminar"
+                (click)="delete(reserva)"
+                class="btn btn-danger btn-sm"
+              >
+              <i class="fas fa-trash"></i>
+              </button></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <app-paginator-reserva *ngIf="paginador" [paginador]="paginador"></app-paginator-reserva> -->
       </div>
     </div>
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Ingrese N° de documento">
-    </div>
-    <div class="col">
-      <button type="button" class="btn btn-dark">Reserva tu cita</button>
-    </div>
   </div>
-</form>
-
-
-
+</div>
+<br>
+<br>
+<br>

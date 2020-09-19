@@ -20,8 +20,7 @@ export class FormComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
 
-  // tslint:disable-next-line: typedef
-  ngOnInit() {
+  ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
       const id = +params.get('id');
       if (id) {

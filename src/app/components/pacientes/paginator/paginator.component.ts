@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'paginator-nav',
+  selector: 'app-paginator-nav',
   templateUrl: './paginator.component.html'
 })
 export class PaginatorComponent implements OnInit, OnChanges {

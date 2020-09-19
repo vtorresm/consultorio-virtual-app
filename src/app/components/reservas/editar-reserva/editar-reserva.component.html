@@ -20,10 +20,14 @@
       <div class="form-row">
         <div class="form-group col-md-4">
           <label for="inputState">Tipo Documento</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>DNI</option>
-            <option>Carnet de Extranjeria</option>
-          </select>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Ingrese tipo documento"
+            [(ngModel)]="reserva.tipoDocumento"
+            name="nroDocumento"
+            #nroDocumento="ngModel"
+          />
         </div>
         <div class="form-group col-md-4">
           <label for="inputState">N° Documento</label>

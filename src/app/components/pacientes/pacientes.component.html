@@ -4,13 +4,17 @@
 <br />
 <br />
 <br />
+<app-detalle-pacientes
+  *ngIf="pacienteSeleccionado"
+  [paciente]="pacienteSeleccionado"
+></app-detalle-pacientes>
 <div class="container text-center mt-3">
   <button
     class="btn btn-rounded btn-primary"
     type="button"
-    [routerLink]="['/pacientes/form']"
+    [routerLink]="['/pacientes/editar-paciente']"
   >
-    <h5><b>Crear Paciente</b></h5>
+   Crear Paciente
   </button>
 </div>
 <div *ngIf="pacientes?.length == 0" class="alert alert-info">
@@ -32,8 +36,8 @@
             <tr>
               <th>id</th>
               <th>Nombre</th>
-              <th>Apellido</th>
               <th>DNI</th>
+              <th>Distrito</th>
               <th>Email</th>
               <th>Fecha creación</th>
               <th>Editar</th>
@@ -42,36 +46,62 @@
           </thead>
           <tbody>
             <tr *ngFor="let paciente of pacientes">
-              <td>{{ paciente.id }}</td>
-              <td>{{ paciente.nombre }}</td>
-              <td>{{ paciente.apellido }}</td>
+              <td>
+                {{ paciente.id }}
+                <!-- <img
+                  (click)="abrirModal(paciente)"
+                  *ngIf="paciente?.foto"
+                  src="http://localhost:8080/api/uploads/img/{{ paciente.foto }}"
+                  alt="{{ paciente.foto }}"
+                  class="img-thumbnail rounded"
+                  style="width: 64px; cursor: pointer"
+                />
+
+                <img
+                  (click)="abrirModal(paciente)"
+                  *ngIf="!paciente?.foto"
+                  src="http://localhost:8080/images/no-usuario.png"
+                  alt="Sin foto"
+                  class="img-thumbnail rounded"
+                  style="width: 64px; cursor: pointer"
+                /> -->
+              </td>
+              <td>{{ paciente.nombreApellido }}</td>
               <td>{{ paciente.dni }}</td>
+              <td>{{ paciente.distrito.nombre }}</td>
               <td>{{ paciente.email }}</td>
               <td>{{ paciente.createAt }}</td>
-              <td> <button
-                type="button"
-                name="editar"
-                [routerLink]="['/pacientes/form', paciente.id]"
-                class="btn btn-primary btn-sm"
-              >
-              <i class="fas fa-user-edit"></i>
-              </button></td>
-              <td> <button
-                type="button"
-                name="eliminar"
-                (click)="delete(paciente)"
-                class="btn btn-danger btn-sm"
-              >
-              <i class="fas fa-trash"></i>
-              </button></td>
+              <td>
+                <button
+                  type="button"
+                  name="editar"
+                  [routerLink]="['/pacientes/editar-paciente', paciente.id]"
+                  class="btn btn-primary btn-sm"
+                >
+                  <i class="fas fa-user-edit"></i>
+                </button>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  name="eliminar"
+                  (click)="delete(paciente)"
+                  class="btn btn-danger btn-sm"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
-        <app-paginator-nav *ngIf="paginador" [paginador]="paginador"></app-paginator-nav>
+        <app-paginator-nav
+          *ngIf="paginador"
+          [paginador]="paginador"
+        ></app-paginator-nav>
       </div>
     </div>
   </div>
 </div>
-<br>
-<br>
-<br>
+<br />
+<br />
+<br />

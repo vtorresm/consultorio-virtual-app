@@ -2,6 +2,8 @@
 <br />
 <br />
 <br />
+<br />
+<br />
 <app-detalle-doctores
   *ngIf="doctorSeleccionado"
   [doctor]="doctorSeleccionado"
@@ -12,7 +14,7 @@
     type="button"
     [routerLink]="['/doctores/editar-doctor']"
   >
-    <h5><b>Crear Doctor</b></h5>
+   Crear Doctor
   </button>
 </div>
 <div *ngIf="doctores?.length == 0" class="alert alert-info">

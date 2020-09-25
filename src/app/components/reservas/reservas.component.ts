@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Reserva } from './reserva';
-import { ReservaService } from './reserva.service';
 import { tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+
+import { Reserva } from './reserva';
+import { ReservaService } from './reserva.service';
 import { ModalReservaService } from '../reservas/detalle-reserva/modal-reserva.service';
 
 import swal from 'sweetalert2';
@@ -47,10 +48,10 @@ export class ReservasComponent implements OnInit {
         });
     });
 
-    this.modalReservasService.notificarUpload.subscribe(doctor => {
+    this.modalReservasService.notificarUpload.subscribe(reserva => {
       this.reservas = this.reservas.map(reservaOriginal => {
-        if (doctor.id === reservaOriginal.id) {
-          reservaOriginal.id = doctor.id;
+        if (reserva.id === reservaOriginal.id) {
+          reservaOriginal.id = reserva.id;
         }
         return reservaOriginal;
       });

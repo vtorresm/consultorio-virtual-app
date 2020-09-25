@@ -50,6 +50,11 @@ p {
 
 a:hover { text-decoration: none; }
 
+.dataPickerForm {
+  width: 300px;
+  display: inline;
+}
+
 /* .btn {
   font-size: 14px;
   padding: 15px 26px;
@@ -379,3 +384,6 @@ footer .list-inline .list-inline-item {
 @media (min-width: 992px) and (max-width: 1199.98px) { }
 
 @media (min-width: 1200px) { }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

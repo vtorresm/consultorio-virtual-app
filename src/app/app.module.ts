@@ -10,7 +10,7 @@ import { DoctoresComponent } from './components/doctores/doctores.component';
 import { DoctorService } from './components/doctores/doctor.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormComponent } from './components/pacientes/form.component';
+import { EditarPacienteComponent } from './components/pacientes/editar-paciente/editar-paciente.component';
 import { FormsModule } from '@angular/forms';
 import { PaginatorComponent } from './components/pacientes/paginator/paginator.component';
 import { PaginatorDoctorComponent } from './components/doctores/paginator-doctor/paginator-doctor.component';
@@ -30,22 +30,28 @@ import { ReservasComponent } from './components/reservas/reservas.component';
 import { EditarReservaComponent } from './components/reservas/editar-reserva/editar-reserva.component';
 import { DetalleReservaComponent } from './components/reservas/detalle-reserva/detalle-reserva.component';
 import { PaginatorReservaComponent } from './components/reservas/paginator-reserva/paginator-reserva.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import {MatSelectModule} from '@angular/material/select';
 
 registerLocaleData(localeES, 'es');
+import { from } from 'rxjs';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'pacientes', component: PacientesComponent },
   { path: 'pacientes/page/:page', component: PacientesComponent },
   {
-    path: 'pacientes/form',
-    component: FormComponent,
+    path: 'pacientes/editar-paciente',
+    component: EditarPacienteComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: { role: 'ROLE_ADMIN' },
   },
   {
-    path: 'pacientes/form/:id',
-    component: FormComponent,
+    path: 'pacientes/editar-paciente/:id',
+    component: EditarPacienteComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: { role: 'ROLE_ADMIN' },
   },
@@ -77,7 +83,7 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     PacientesComponent,
-    FormComponent,
+    EditarPacienteComponent,
     PaginatorComponent,
     PaginatorDoctorComponent,
     DoctoresComponent,
@@ -95,6 +101,11 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMomentDateModule,
+    MatSelectModule
   ],
   providers: [
     PacienteService,

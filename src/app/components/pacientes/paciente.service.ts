@@ -1,27 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Paciente } from './paciente';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
-@Injectable()
+import { Paciente } from './paciente';
+import { Distrito } from '../shared/distrito';
+
+@Injectable({ providedIn: 'root' })
 export class PacienteService {
   private urlEndPoint = 'http://localhost:8080/api/pacientes';
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  getDistritos(): Observable<Distrito[]> {
+    return this.http.get<Distrito[]>(this.urlEndPoint + '/distritos');
+  }
 
   getPacientes(page: number): Observable<any> {
     return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
       tap((response: any) => {
         console.log('PacienteService: tap 1');
         (response.content as Paciente[]).forEach((paciente) =>
-          console.log(paciente.nombre)
+          console.log(paciente.nombreApellido)
         );
       }),
       map((response: any) => {
         (response.content as Paciente[]).map((paciente) => {
-          paciente.nombre = paciente.nombre;
+          paciente.nombreApellido = paciente.nombreApellido;
           return paciente;
         });
         return response;
@@ -29,7 +35,7 @@ export class PacienteService {
       tap((response) => {
         console.log('PacienteService: tap 2');
         (response.content as Paciente[]).forEach((paciente) =>
-          console.log(paciente.nombre)
+          console.log(paciente.nombreApellido)
         );
       })
     );
@@ -89,5 +95,22 @@ export class PacienteService {
         return throwError(e);
       })
     );
+  }
+
+  subirFoto(archivo: File, id): Observable<HttpEvent<{}>> {
+    const formData = new FormData();
+    formData.append('photo', archivo);
+    formData.append('id', id);
+
+    const req = new HttpRequest(
+      'POST',
+      `${this.urlEndPoint}/upload`,
+      formData,
+      {
+        reportProgress: true,
+      }
+    );
+
+    return this.http.request(req);
   }
 }

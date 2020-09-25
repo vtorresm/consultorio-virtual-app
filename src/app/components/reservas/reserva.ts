@@ -5,7 +5,7 @@ export class Reserva {
   nroDocumento: string;
   especialidad: string;
   medico: string;
-  hora: string;
+  horaCita: string;
   precio: number;
   createAt: string;
 }

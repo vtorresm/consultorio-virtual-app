@@ -25,8 +25,8 @@
             class="form-control"
             placeholder="Ingrese tipo documento"
             [(ngModel)]="reserva.tipoDocumento"
-            name="nroDocumento"
-            #nroDocumento="ngModel"
+            name="tipoDocumento"
+            #tipoDocumento="ngModel"
           />
         </div>
         <div class="form-group col-md-4">
@@ -44,40 +44,93 @@
       <div class="form-row">
         <div class="form-group col-md-4">
           <label for="inputState">Especialidad</label>
-          <select id="inputState" class="form-control">
-            <option value="seleccionar selected">Seleccionar</option>
-            <option value="cadiologia">Cadiologia</option>
-            <option value="pediatria">Pediatria</option>
-            <option value="traumatologia">Traumatologia</option>
-          </select>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Ingrese una especialidad"
+            [(ngModel)]="reserva.especialidad"
+            name="especialidad"
+            #especialidad="ngModel"
+          />
         </div>
         <div class="form-group col-md-4">
           <label for="inputState">Medico</label>
-          <select id="inputState" class="form-control">
-            <option>Joe Doe</option>
-            <option>Juan Hernandez</option>
-            <option>Maria de la Cruz</option>
-          </select>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Ingrese un medico"
+            [(ngModel)]="reserva.medico"
+            name="medico"
+            #medico="ngModel"
+          />
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-4">
-          <label for="inputCity">Fecha de cita</label>
-          <input type="date" class="form-control" id="inputCity" />
+          <label for="createAt">Fecha cita</label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            class="form-control dataPickerForm"
+            [(ngModel)]="reserva.createAt"
+            name="createAt"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </div>
         <div class="form-group col-md-4">
           <label for="inputState">Hora de cita</label>
-          <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Ingrese una hora de cita"
+            [(ngModel)]="reserva.horaCita"
+            name="horaCita"
+            #horaCita="ngModel"
+          />
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-4">
-          <button type="submit" class="btn btn-primary btn-block">
-            Reserva tu cita
+          <label for="createAt">N° Reserva</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Ingrese un nro Reserva"
+            [(ngModel)]="reserva.nroReserva"
+            name="nroReserva"
+            #nroReserva="ngModel"
+          />
+        </div>
+        <div class="form-group col-md-4">
+         
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <button
+            class="btn btn-primary btn-block"
+            role="button"
+            (click)="create()"
+            *ngIf="!reserva.id; else elseBlock"
+            [disabled]="!reservaForm.form.valid"
+          >
+            Crear
           </button>
+
+          <ng-template #elseBlock>
+            <button
+              class="btn btn-primary btn-block"
+              role="button"
+              (click)="update()"
+              [disabled]="!reservaForm.form.valid"
+            >
+              Guardar
+            </button>
+          </ng-template>
         </div>
         <div class="form-group col-md-4">
           <button type="submit" class="btn btn-danger btn-block">

@@ -10,7 +10,7 @@
     type="button"
     [routerLink]="['/reservas/editar-reserva']"
   >
-    <h5><b>Crear Reserva</b></h5>
+    Crear Reserva
   </button>
 </div>
 <div *ngIf="reservas?.length == 0" class="alert alert-info">
@@ -30,6 +30,7 @@
         >
           <thead class="thead-dark">
             <tr>
+              <th>ID</th>
               <th>N° Reserva</th>
               <th>Tipo Doc</th>
               <th>N° Doc</th>
@@ -44,37 +45,44 @@
           <tbody>
             <tr *ngFor="let reserva of reservas">
               <td>{{ reserva.id }}</td>
-              <td>{{ reserva.tipoDocuemnto }}</td>
+              <td>{{ reserva.nroReserva }}</td>
+              <td>{{ reserva.tipoDocumento }}</td>
               <td>{{ reserva.nroDocumento }}</td>
               <td>{{ reserva.especialidad }}</td>
               <td>{{ reserva.medico }}</td>
-              <td>{{ reserva.hora }}</td>
-              <td>{{ reserva.precio }}</td>
               <td>{{ reserva.createAt }}</td>
-              <td> <button
-                type="button"
-                name="editar"
-                [routerLink]="['/reservas/editar-reserva', reserva.id]"
-                class="btn btn-primary btn-sm"
-              >
-              <i class="fas fa-user-edit"></i>
-              </button></td>
-              <td> <button
-                type="button"
-                name="eliminar"
-                (click)="delete(reserva)"
-                class="btn btn-danger btn-sm"
-              >
-              <i class="fas fa-trash"></i>
-              </button></td>
+              <td>{{ reserva.horaCita }}</td>
+              <td>
+                <button
+                  type="button"
+                  name="editar"
+                  [routerLink]="['/reservas/editar-reserva', reserva.id]"
+                  class="btn btn-primary btn-sm"
+                >
+                  <i class="fas fa-user-edit"></i>
+                </button>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  name="eliminar"
+                  (click)="delete(reserva)"
+                  class="btn btn-danger btn-sm"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
-        <!-- <app-paginator-reserva *ngIf="paginador" [paginador]="paginador"></app-paginator-reserva> -->
+        <app-paginator-reserva
+          *ngIf="paginador"
+          [paginador]="paginador"
+        ></app-paginator-reserva>
       </div>
     </div>
   </div>
 </div>
-<br>
-<br>
-<br>
+<br />
+<br />
+<br />

@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Paciente } from './paciente';
-import { PacienteService } from './paciente.service';
 import { Router, ActivatedRoute } from '@angular/router';
+
+import { Paciente } from '../paciente';
+import { PacienteService } from '../paciente.service';
+import { Distrito } from '../../shared/distrito';
+
 import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
+  selector: 'app-editar-paciente',
+  templateUrl: './editar-paciente.component.html',
 })
-export class FormComponent implements OnInit {
+export class EditarPacienteComponent implements OnInit {
   public paciente: Paciente = new Paciente();
+  distritos: Distrito[];
   titulo = 'Crear Paciente';
 
   errores: string[];
@@ -29,6 +33,20 @@ export class FormComponent implements OnInit {
           .subscribe((paciente) => (this.paciente = paciente));
       }
     });
+
+    this.pacienteService
+      .getDistritos()
+      .subscribe((distritos) => (this.distritos = distritos));
+
+    // this.pacienteService
+    // .getDistritos()
+    // .subscribe(distritos => {
+    //   this.distritos = distritos;
+    //   this.distritos.unshift({
+    //     nombre: '[ Seleccione Distrito ]',
+    //     codigo: ''
+    //   });
+    // });
   }
 
   create(): void {
@@ -38,7 +56,7 @@ export class FormComponent implements OnInit {
         this.router.navigate(['/pacientes']);
         swal.fire(
           'Nuevo paciente',
-          `El paciente ${paciente.nombre} ha sido creado con éxito`,
+          `El paciente ${paciente.nombreApellido} ha sido creado con éxito`,
           'success'
         );
       },
@@ -67,5 +85,15 @@ export class FormComponent implements OnInit {
         console.error(err.error.errors);
       }
     );
+  }
+
+  compararDistrito(o1: Distrito, o2: Distrito): boolean {
+    if (o1 === undefined && o2 === undefined) {
+      return true;
+    }
+
+    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+
+    // return o1 === null || o2 === null || o1 === undefined || o2 === undefined ? false : o1.id === o2.id;
   }
 }

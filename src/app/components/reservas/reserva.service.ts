@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class ReservaService {
-  private urlEndPoint = 'http://localhost:8090/api/reservas';
+  private urlEndPoint = 'http://localhost:8080/api/reservas';
 
   constructor(private http: HttpClient, private router: Router) {}
 
   getReservas(page: number): Observable<any> {
-    return this.http.get(this.urlEndPoint + '/listar/').pipe(
+    return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
       tap((response: any) => {
         console.log('ReservaService: tap 1');
         (response.content as Reserva[]).forEach((reserva) =>

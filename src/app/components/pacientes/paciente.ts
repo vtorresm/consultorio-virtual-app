@@ -1,15 +1,13 @@
+import { Distrito } from '../shared/distrito';
 export class Paciente {
   id: number;
-  nombre: string;
-  apellido: string;
+  nombreApellido: string;
   dni: string;
-  // genero: string;
-  // fechaNacimiento: Date;
+  gender: string;
   email: string;
-  // celular: string;
-  // distrito: string;
-  // direccion: string;
-  // referencia: string;
-  // interior: string;
+  cellPhone: string;
+  birthDate: Date;
+  address: string;
   createAt: string;
+  distrito: Distrito;
 }

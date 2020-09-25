@@ -15,12 +15,14 @@
   <div class="card-body">
     <form #pacienteForm="ngForm">
       <div class="form-group row">
-        <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+        <label for="nombre" class="col-form-label col-sm-2"
+          >Nombre Completo</label
+        >
         <div class="col-sm-6">
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="paciente.nombre"
+            [(ngModel)]="paciente.nombreApellido"
             name="nombre"
             #nombre="ngModel"
           />
@@ -37,26 +39,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="apellido" class="col-form-label col-sm-2">Apellido</label>
-        <div class="col-sm-6">
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="paciente.apellido"
-            name="apellido"
-            #apellido="ngModel"
-          />
-          <div
-            class="alert alert-danger"
-            *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
-          >
-            <div *ngIf="apellido.errors.required">Apellido es requerido</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="dni" class="col-form-label col-sm-2">DNI</label>
+        <label for="dni" class="col-form-label col-sm-2">Nro DNI</label>
         <div class="col-sm-6">
           <input
             type="text"
@@ -65,12 +48,88 @@
             name="dni"
             #dni="ngModel"
           />
-          <!-- required -->
           <div
             class="alert alert-danger"
             *ngIf="dni.invalid && (dni.dirty || dni.touched)"
           >
-            <div *ngIf="dni.errors.required">DNI es requerido</div>
+            <div *ngIf="dni.errors.required">Nro DNI es requerido</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="cellPhone" class="col-form-label col-sm-2">Celular</label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="paciente.cellPhone"
+            name="cellPhone"
+            #cellPhone="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="cellPhone.invalid && (cellPhone.dirty || cellPhone.touched)"
+          >
+            <div *ngIf="cellPhone.errors.required">
+              Nro Celular es requerido
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="birthDate" class="col-form-label col-sm-2">Fecha Nac</label>
+        <div class="col-sm-6">
+          <input
+            matInput
+            [matDatepicker]="picker"
+            class="form-control dataPickerForm"
+            [(ngModel)]="paciente.birthDate"
+            name="createAt"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="distrito" class="col-form-label col-sm-2">Distrito</label>
+        <div class="col-sm-6">
+          <select
+            [compareWith]="compararDistrito"
+            class="form-control"
+            [(ngModel)]="paciente.distrito"
+            name="distrito"
+          >
+            <option [ngValue]="undefined">
+              --- selecionar un distrito ---
+            </option>
+            <option *ngFor="let distrito of distritos" [ngValue]="distrito">
+              {{ distrito.nombre }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="address" class="col-form-label col-sm-2">Dirección</label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="paciente.address"
+            name="address"
+            #address="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="address.invalid && (address.dirty || address.touched)"
+          >
+            <div *ngIf="address.errors.required">Dirección es requerido</div>
           </div>
         </div>
       </div>
@@ -124,9 +183,9 @@
     </form>
   </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

@@ -99,7 +99,7 @@
             [matDatepicker]="picker"
             class="form-control dataPickerForm"
             [(ngModel)]="paciente.birthDate"
-            name="createAt"
+            name="birthDate"
           />
           <mat-datepicker-toggle
             matSuffix
@@ -114,14 +114,17 @@
         <div class="col-sm-6">
           <select
             [compareWith]="compararDistrito"
-            class="form-control"
+            class="form-control select-big"
             [(ngModel)]="paciente.distrito"
             name="distrito"
           >
             <option [ngValue]="undefined">
               --- selecionar un distrito ---
             </option>
-            <option *ngFor="let distrito of distritos | async" [value]="distrito.id">
+            <option
+              *ngFor="let distrito of distritos | async"
+              [value]="distrito.id"
+            >
               {{ distrito.nombre }}
             </option>
           </select>

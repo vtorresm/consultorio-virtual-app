@@ -55,6 +55,10 @@ a:hover { text-decoration: none; }
   display: inline;
 }
 
+.select-big {
+  height: 50px;
+}
+
 /* .btn {
   font-size: 14px;
   padding: 15px 26px;

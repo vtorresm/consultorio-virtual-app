@@ -6,6 +6,7 @@ import { PacienteService } from '../paciente.service';
 import { Distrito } from '../../shared/distrito';
 
 import swal from 'sweetalert2';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-editar-paciente',
@@ -13,7 +14,8 @@ import swal from 'sweetalert2';
 })
 export class EditarPacienteComponent implements OnInit {
   public paciente: Paciente = new Paciente();
-  distritos: Distrito[];
+  // distritos: Distrito[];
+  distritos: Observable<Distrito[]>;
   titulo = 'Crear Paciente';
 
   errores: string[];
@@ -34,19 +36,15 @@ export class EditarPacienteComponent implements OnInit {
       }
     });
 
-    this.pacienteService
-      .getDistritos()
-      .subscribe((distritos) => (this.distritos = distritos));
+    this.distritos =this.pacienteService.getDistritos();
+    // this.pacienteService.getDistritos().subscribe(distritos => {
+    //   this.distritos = distritos;
+    //   console.log(distritos);
+    // });
 
     // this.pacienteService
-    // .getDistritos()
-    // .subscribe(distritos => {
-    //   this.distritos = distritos;
-    //   this.distritos.unshift({
-    //     nombre: '[ Seleccione Distrito ]',
-    //     codigo: ''
-    //   });
-    // });
+    //   .getDistritos()
+    //   .subscribe((distritos) => (this.distritos = distritos));
   }
 
   create(): void {
@@ -92,8 +90,10 @@ export class EditarPacienteComponent implements OnInit {
       return true;
     }
 
-    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+    // return o1 && o2 ? o1.id === o2.id : o1 === o2;
 
-    // return o1 === null || o2 === null || o1 === undefined || o2 === undefined ? false : o1.id === o2.id;
+    return o1 === null || o2 === null || o1 === undefined || o2 === undefined
+      ? false
+      : o1.id === o2.id;
   }
 }

@@ -79,6 +79,19 @@
       </div>
 
       <div class="form-group row">
+        <label for="gender" class="col-form-label col-sm-2">Genero</label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="paciente.gender"
+            name="gender"
+            #gender="ngModel"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
         <label for="birthDate" class="col-form-label col-sm-2">Fecha Nac</label>
         <div class="col-sm-6">
           <input
@@ -108,7 +121,7 @@
             <option [ngValue]="undefined">
               --- selecionar un distrito ---
             </option>
-            <option *ngFor="let distrito of distritos" [ngValue]="distrito">
+            <option *ngFor="let distrito of distritos | async" [value]="distrito.id">
               {{ distrito.nombre }}
             </option>
           </select>

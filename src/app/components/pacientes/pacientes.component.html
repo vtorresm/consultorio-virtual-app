@@ -70,7 +70,7 @@
               <td>{{ paciente.dni }}</td>
               <td>{{ paciente.distrito.nombre }}</td>
               <td>{{ paciente.email }}</td>
-              <td>{{ paciente.createAt }}</td>
+              <td>{{ paciente.createAt | date: 'mediumDate' }}</td>
               <td>
                 <button
                   type="button"

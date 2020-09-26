@@ -1,4 +1,3 @@
-import { Especialidad } from '../shared/especialidad';
 export class Reserva {
   id: number;
   nroReserva: string;
@@ -8,5 +7,5 @@ export class Reserva {
   horaCita: string;
   precio: number;
   createAt: string;
-  especialidad: Especialidad;
+  especialidad: string;
 }

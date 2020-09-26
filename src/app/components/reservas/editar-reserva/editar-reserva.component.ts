@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { ReservaService } from '../reserva.service';
 import { Reserva } from '../reserva';
+import { Especialidad } from '../../shared/especialidad';
 
 import swal from 'sweetalert2';
 
@@ -35,6 +36,7 @@ export class EditarReservaComponent implements OnInit {
   }
 
   create(): void {
+    console.log(this.reserva);
     this.reservaService.create(this.reserva).subscribe(
       (reserva) => {
         this.router.navigate(['/reservas']);

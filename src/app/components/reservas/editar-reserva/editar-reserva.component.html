@@ -4,70 +4,96 @@
 <br />
 <br />
 <br />
-<br />
-<br />
-<br />
-<hr />
 <ul class="alert alert-danger" *ngIf="errores?.length > 0">
   <li *ngFor="let err of errores">
     {{ err }}
   </li>
 </ul>
+
 <div class="card bg-dark text-white">
   <div class="card-header">{{ titulo }}</div>
   <div class="card-body">
     <form #reservaForm="ngForm">
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="inputState">Tipo Documento</label>
+      <div class="form-group row">
+        <label for="nroReserva" class="col-form-label col-sm-2"
+          >N° de reserva</label
+        >
+        <div class="col-sm-6">
           <input
             type="text"
             class="form-control"
-            placeholder="Ingrese tipo documento"
+            [(ngModel)]="reserva.nroReserva"
+            name="nroReserva"
+            #nroReserva="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="nroReserva.invalid && (nroReserva.dirty || nroReserva.touched)"
+          >
+            <div *ngIf="nroReserva.errors.required">Nro Reserva es requerido</div>
+            <div *ngIf="nroReserva.errors.minlength">
+              Nro Reserva es obligatorio
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="tipoDocumento" class="col-form-label col-sm-2">Tipo Documento</label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
             [(ngModel)]="reserva.tipoDocumento"
             name="tipoDocumento"
             #tipoDocumento="ngModel"
           />
+          <div
+            class="alert alert-danger"
+            *ngIf="tipoDocumento.invalid && (tipoDocumento.dirty || tipoDocumento.touched)"
+          >
+            <div *ngIf="tipoDocumento.errors.required">Tipo Documento DNI es requerido</div>
+          </div>
         </div>
-        <div class="form-group col-md-4">
-          <label for="inputState">N° Documento</label>
+      </div>
+
+      <div class="form-group row">
+        <label for="nroDocumento" class="col-form-label col-sm-2">N° Documento</label>
+        <div class="col-sm-6">
           <input
             type="text"
             class="form-control"
-            placeholder="Ingrese N° de documento"
             [(ngModel)]="reserva.nroDocumento"
             name="nroDocumento"
             #nroDocumento="ngModel"
           />
+          <div
+            class="alert alert-danger"
+            *ngIf="nroDocumento.invalid && (nroDocumento.dirty || nroDocumento.touched)"
+          >
+            <div *ngIf="nroDocumento.errors.required">
+              Nro Documento es requerido
+            </div>
+          </div>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="inputState">Especialidad</label>
+
+      <div class="form-group row">
+        <label for="medico" class="col-form-label col-sm-2">Medico</label>
+        <div class="col-sm-6">
           <input
             type="text"
             class="form-control"
-            placeholder="Ingrese una especialidad"
-            [(ngModel)]="reserva.especialidad.nombre"
-            name="especialidad"
-            #especialidad="ngModel"
-          />
-        </div>
-        <div class="form-group col-md-4">
-          <label for="inputState">Medico</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Ingrese un medico"
             [(ngModel)]="reserva.medico"
             name="medico"
             #medico="ngModel"
           />
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="createAt">Fecha cita</label>
+
+      <div class="form-group row">
+        <label for="createAt" class="col-form-label col-sm-2">Fecha Cita</label>
+        <div class="col-sm-6">
           <input
             matInput
             [matDatepicker]="picker"
@@ -81,38 +107,44 @@
           ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </div>
-        <div class="form-group col-md-4">
-          <label for="inputState">Hora de cita</label>
+      </div>
+
+      <div class="form-group row">
+        <label for="horaCita" class="col-form-label col-sm-2">Hora Cita</label>
+        <div class="col-sm-6">
           <input
             type="text"
             class="form-control"
-            placeholder="Ingrese una hora de cita"
             [(ngModel)]="reserva.horaCita"
             name="horaCita"
             #horaCita="ngModel"
           />
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="createAt">N° Reserva</label>
+
+      <div class="form-group row">
+        <label for="especialidad" class="col-form-label col-sm-2">Especialidad</label>
+        <div class="col-sm-6">
           <input
             type="text"
             class="form-control"
-            placeholder="Ingrese un nro Reserva"
-            [(ngModel)]="reserva.nroReserva"
-            name="nroReserva"
-            #nroReserva="ngModel"
+            [(ngModel)]="reserva.especialidad"
+            name="especialidad"
+            #especialidad="ngModel"
           />
-        </div>
-        <div class="form-group col-md-4">
-         
+          <div
+            class="alert alert-danger"
+            *ngIf="especialidad.invalid && (especialidad.dirty || especialidad.touched)"
+          >
+            <div *ngIf="especialidad.errors.required">Dirección es requerido</div>
+          </div>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group col-md-4">
+
+      <div class="form-group row">
+        <div class="col-sm-6">
           <button
-            class="btn btn-primary btn-block"
+            class="btn btn-primary"
             role="button"
             (click)="create()"
             *ngIf="!reserva.id; else elseBlock"
@@ -123,7 +155,7 @@
 
           <ng-template #elseBlock>
             <button
-              class="btn btn-primary btn-block"
+              class="btn btn-primary"
               role="button"
               (click)="update()"
               [disabled]="!reservaForm.form.valid"
@@ -132,15 +164,11 @@
             </button>
           </ng-template>
         </div>
-        <div class="form-group col-md-4">
-          <button type="submit" class="btn btn-danger btn-block">
-            Cancelar
-          </button>
-        </div>
       </div>
     </form>
   </div>
 </div>
+<br />
 <br />
 <br />
 <br />

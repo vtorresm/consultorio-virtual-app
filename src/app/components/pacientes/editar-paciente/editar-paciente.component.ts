@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
 export class EditarPacienteComponent implements OnInit {
   public paciente: Paciente = new Paciente();
   // distritos: Distrito[];
-  distritos: Observable<Distrito[]>;
+  // distritos: Observable<Distrito[]>;
   titulo = 'Crear Paciente';
 
   errores: string[];
@@ -36,7 +36,7 @@ export class EditarPacienteComponent implements OnInit {
       }
     });
 
-    this.distritos =this.pacienteService.getDistritos();
+    // this.distritos =this.pacienteService.getDistritos();
     // this.pacienteService.getDistritos().subscribe(distritos => {
     //   this.distritos = distritos;
     //   console.log(distritos);

@@ -1,4 +1,4 @@
-import { Distrito } from '../shared/distrito';
+// import { Distrito } from '../shared/distrito';
 export class Paciente {
   id: number;
   nombreApellido: string;
@@ -9,5 +9,5 @@ export class Paciente {
   birthDate: Date;
   address: string;
   createAt: string;
-  distrito: Distrito;
+  // distrito: Distrito;
 }
